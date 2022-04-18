@@ -1,27 +1,39 @@
-import { Layout } from "antd";
-//import "antd/dist/antd.css";
-const { Header, Footer, Sider, Content } = Layout;
+//import { Layout } from "antd";
+// const { Header, Footer, Sider, Content } = Layout;
+import { HeartOutlined } from "@ant-design/icons";
+import React from "react";
+import MenuBar from "../../component/menuBar";
 
 import styles from "../../styles/page.module.scss";
 const Home = () => {
   return (
-    <Layout className={styles.home}>
-      <Header
-        style={{ height: "16%", flexGrow: 1, backgroundColor: "palegoldenrod" }}
+    <div className={styles.home}>
+      <div
+        style={{
+          height: "7.5%",
+          flexGrow: 1,
+          backgroundColor: "palegoldenrod",
+        }}
       >
-        this is home
-      </Header>
-      <Content
-        style={{ height: "76%", flexGrow: 1, backgroundColor: "palegreen" }}
+        <MenuBar />
+      </div>
+      <div style={{ height: "85%", flexGrow: 1, backgroundColor: "#5bccf6" }}>
+        div
+      </div>
+      <div
+        style={{
+          height: "7.5%",
+          flexGrow: 1,
+          backgroundColor: "#fcde67",
+          color: "#5bccf6",
+          fontWeight: "bolder",
+          fontSize: 20,
+          textAlign: "center",
+        }}
       >
-        Content
-      </Content>
-      <Footer
-        style={{ height: "8%", flexGrow: 1, backgroundColor: "paleturquoise" }}
-      >
-        Footer
-      </Footer>
-    </Layout>
+        A project built with <HeartOutlined /> by shubham negi and nitin
+      </div>
+    </div>
 
     // <>
     //   <Layout>
