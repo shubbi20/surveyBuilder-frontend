@@ -1,7 +1,64 @@
 .home {
   height: 100vh;
   width: 100vw;
-  //   display: flex;
-  //   flex-direction: column;
+  display: flex;
+  flex-direction: column;
   //   background-color: rebeccapurple;
+}
+
+.container1 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 12.5%;
+  font-size: larger;
+  background-color: #fcde67;
+}
+
+.container2 {
+  display: flex;
+}
+
+.Menuelement {
+  margin-right: 2.5em;
+}
+
+.Menuelement:hover {
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 660px) {
+  .Menuelement {
+    margin-right: 1.5em;
+  }
+}
+
+@media only screen and (max-width: 560px) {
+  .Menuelement {
+    margin-right: 0.5em;
+  }
+
+  .container1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 8.5%;
+    font-size: medium;
+    background-color: #fcde67;
+  }
+}
+
+@media only screen and (max-width: 420px) {
+  .Menuelement {
+    margin-right: 0.8em;
+  }
+
+  .container1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 8.5%;
+    font-size: small;
+    background-color: #fcde67;
+  }
 }

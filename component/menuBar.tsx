@@ -26,7 +26,7 @@ export const MenuBar = () => {
         onClick={handleClick}
         defaultSelectedKeys={[currentKey]}
         selectedKeys={[currentKey]}
-        style={{ backgroundColor: "#fcde67" }}
+        style={{ backgroundColor: "#fcde67", height: "7.5%", display: "flex" }}
       >
         <Menu.Item style={{ color: "#030e12", fontWeight: "bold" }} key="home">
           Home
