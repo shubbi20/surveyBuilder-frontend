@@ -13,7 +13,10 @@ const Home = () => {
         <HomeContent />
       </div>
       <div className={styles.stickyFooter}>
-        A project built with <HeartOutlined /> by shubham negi and nitin kumar
+        A project built with <HeartOutlined /> by{" "}
+        <a href="https://www.linkedin.com/in/shubham-negi20/details/experience/">
+          <u>Shubham negi</u>
+        </a>
       </div>
     </div>
   );
