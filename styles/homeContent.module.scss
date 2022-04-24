@@ -1,0 +1,86 @@
+.contentContainer {
+  box-sizing: border-box;
+  margin: 1em;
+  margin-top: 8em;
+  //border: 2px solid red;
+}
+
+.containerBox {
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  //   border: 2px solid orchid;
+}
+
+.leftBox {
+  box-sizing: border-box;
+  padding: 1em;
+  width: 650px;
+  height: 290px;
+}
+
+.leftBox p {
+  line-height: 2.6;
+  font-size: large;
+}
+
+.rightBox {
+  box-sizing: border-box;
+  width: 480px;
+  height: 290px;
+}
+
+.fontStyle {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  margin-left: 1.5em;
+  font-size: large;
+  font-style: italic;
+}
+
+.belowContainer {
+  // border: 2px solid yellowgreen;
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width: 100%;
+  margin-bottom: 7.2em;
+}
+
+.belowBoxes {
+  box-sizing: border-box;
+  width: 320px;
+  margin-top: 2em;
+}
+
+.midContainer {
+  box-sizing: border-box;
+  margin-right: 14em;
+  margin-left: 14em;
+  margin-top: 9.2em;
+  text-align: center;
+  line-height: 1.5;
+}
+
+@media only screen and (max-width: 860px) {
+  .midContainer {
+    margin-bottom: 0.2em;
+    margin-right: 1em;
+    margin-left: 1em;
+    margin-top: 7em;
+    text-align: center;
+    line-height: 1.5;
+  }
+}
+
+@media only screen and (max-width: 420px) {
+  .midContainer {
+    margin-right: 0.2em;
+    margin-bottom: 0.2em;
+    margin-left: 0.2em;
+    margin-top: 7em;
+    text-align: center;
+    line-height: 1.5;
+  }
+}

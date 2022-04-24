@@ -1,13 +1,14 @@
 .home {
-  height: 100vh;
+  min-height: 100vh;
   width: 100vw;
   display: flex;
   flex-direction: column;
-  //   background-color: rebeccapurple;
 }
 
 .container1 {
   display: flex;
+  box-sizing: border-box;
+  width: 100vw;
   justify-content: space-between;
   align-items: center;
   height: 12.5%;
@@ -20,11 +21,25 @@
 }
 
 .Menuelement {
+  box-sizing: border-box;
   margin-right: 2.5em;
 }
 
 .Menuelement:hover {
   cursor: pointer;
+}
+
+.stickyFooter {
+  box-sizing: border-box;
+  min-height: 40px;
+  width: 100vw;
+  background-color: #fcde67;
+  color: #206a85;
+  font-weight: bolder;
+  font-size: 20;
+  text-align: center;
+  // position: fixed;
+  // top: 100%;
 }
 
 @media only screen and (max-width: 660px) {
