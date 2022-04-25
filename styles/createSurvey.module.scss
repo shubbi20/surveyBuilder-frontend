@@ -1,0 +1,80 @@
+.heading {
+  background-color: #002140;
+  text-align: center;
+}
+
+.heading h1 {
+  color: white;
+}
+
+.box2 {
+  height: 100%;
+  width: 100%;
+  flex-grow: 5;
+}
+
+.container {
+  display: flex;
+}
+
+.mainBox {
+  display: flex;
+  height: 100vh;
+  overflow-x: hidden;
+}
+
+// .leftBox {
+//   flex-grow: 1;
+//   height: 100%;
+//   text-align: center;
+// }
+
+.middleBox {
+  background-color: white;
+  flex-grow: 2;
+  height: 100%;
+  // text-align: center;
+}
+
+.modalContainer:hover {
+  background-color: rgb(241, 237, 237);
+}
+
+.modalContainer {
+  display: flex;
+  width: 100%;
+  height: 52px;
+  margin-top: 12px;
+  cursor: pointer;
+}
+
+// .rightBox {
+//
+//   // flex-grow: 1;
+//   // // width:200px;
+//   // height: 100%;
+//   // text-align: center;
+//
+// }
+
+#draggable {
+  border-bottom: 15px solid black;
+  border-right: 15px solid black;
+  border-top: 15px solid black;
+  cursor: col-resize;
+}
+
+.surveybuilder {
+  height: 100%;
+  margin: 7px;
+}
+
+.selectionType {
+  background-color: white;
+  padding: 10px;
+}
+
+.selectionType:hover {
+  cursor: pointer;
+  background-color: rgba(238, 238, 238, 0.856);
+}

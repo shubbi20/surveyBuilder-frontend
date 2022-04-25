@@ -25,7 +25,11 @@
   margin-right: 2.5em;
 }
 
-.Menuelement:hover {
+.active {
+  font-weight: bolder;
+}
+
+.container2 div:hover {
   cursor: pointer;
 }
 

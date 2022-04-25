@@ -22,26 +22,30 @@ export const MenuBar = () => {
       />
 
       <div className={styles.container2}>
-        <div className={styles.Menuelement} onClick={handleClick("home")}>
+        <div
+          className={router.pathname == "/home" ? styles.active : ""}
+          style={{ marginRight: "2.5em" }}
+          onClick={handleClick("home")}
+        >
           home
         </div>
         <div
-          className={styles.Menuelement}
-          key="signup"
+          className={router.pathname == "/signup" ? styles.active : ""}
+          style={{ marginRight: "2.5em" }}
           onClick={handleClick("signup")}
         >
           signup
         </div>
         <div
-          className={styles.Menuelement}
-          key="createSurvey"
+          className={router.pathname == "/createSurvey" ? styles.active : ""}
+          style={{ marginRight: "2.5em" }}
           onClick={handleClick("createSurvey")}
         >
           createSurvey
         </div>
         <div
-          className={styles.Menuelement}
-          key="attemptSurvey"
+          className={router.pathname == "/attempSurvey" ? styles.active : ""}
+          style={{ marginRight: "2.5em" }}
           onClick={handleClick("attempSurvey")}
         >
           attemptSurvey
