@@ -1,4 +1,5 @@
 .home {
+  box-sizing: border-box;
   min-height: 100vh;
   width: 100vw;
   display: flex;
@@ -6,8 +7,8 @@
 }
 
 .container1 {
-  display: flex;
   box-sizing: border-box;
+  display: flex;
   width: 100vw;
   justify-content: space-between;
   align-items: center;
@@ -15,15 +16,22 @@
   font-size: larger;
   background-color: #fcde67;
 }
-
+.middlehomecontainer {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  flex-grow: 1;
+  //background-color:#5bccf6;
+}
 .container2 {
+  box-sizing: border-box;
   display: flex;
 }
 
-.Menuelement {
-  box-sizing: border-box;
-  margin-right: 2.5em;
-}
+// .Menuelement {
+//   box-sizing: border-box;
+//   margin-right: 2.5em;
+// }
 
 .active {
   font-weight: bolder;
@@ -42,6 +50,7 @@
   font-weight: bolder;
   font-size: 20;
   text-align: center;
+  font-size: larger;
   // position: fixed;
   // top: 100%;
 }

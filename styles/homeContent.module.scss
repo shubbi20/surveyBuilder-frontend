@@ -34,8 +34,10 @@
 .fontStyle {
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   margin-left: 1.5em;
-  font-size: large;
+  font-size: larger;
   font-style: italic;
+  animation-name: moveInLeft;
+  animation-duration: 3s;
 }
 
 .belowContainer {
@@ -61,6 +63,22 @@
   margin-top: 9.2em;
   text-align: center;
   line-height: 1.5;
+}
+
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+
+  80% {
+    transform: translateX(20px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 @media only screen and (max-width: 860px) {

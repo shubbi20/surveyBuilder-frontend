@@ -9,7 +9,7 @@ const Home = () => {
   return (
     <div className={styles.home}>
       <MenuBar />
-      <div style={{ flexGrow: 1, backgroundColor: "#5bccf6" }}>
+      <div className={styles.middlehomecontainer}>
         <HomeContent />
       </div>
       <div className={styles.stickyFooter}>

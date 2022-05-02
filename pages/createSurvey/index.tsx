@@ -2,6 +2,7 @@ import { useAtom } from "jotai";
 import { NextPage } from "next";
 import { useEffect, useState } from "react";
 import { MenuBar } from "../../component/menuBar";
+import { SurveyBuilder } from "../../component/surveyBuilder/surveyBuilder";
 import { rightDivWidthAtom } from "../../state-machine/designer";
 
 import styles from "../../styles/createSurvey.module.scss";
@@ -65,7 +66,8 @@ const CreateSurvey: NextPage = () => {
       >
         {/* box 2 */}
         <div className={styles.middleBox}>
-          <h1>Middle-box</h1>
+          <h1>Left-box</h1>
+          <SurveyBuilder />
         </div>
         <div
           id={styles.draggable}
