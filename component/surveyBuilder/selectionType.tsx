@@ -4,6 +4,8 @@ import styles from "../../styles/designer.module.scss";
 import {
   selectionQuestionAtom,
   Selectiontypeinterface,
+  updateIndexPrevElementAtom,
+  updateSelectionDescTextAtom,
   updateSelectionQuestionTextAtom,
   selectionEleAtSpecificIndexAtom,
 } from "../../state-machine/designer";
@@ -30,14 +32,27 @@ export const SelectionQuestionType: React.FC<Props> = ({
     updateSelectionQuestionTextAtom
   );
 
+  const [, updateSelectionDescText] = useAtom(updateSelectionDescTextAtom);
+
+  // const [indexElementPreview, setIndexElementPreview] = useAtom(
+  //   updateIndexPrevElement
+  // );
+
   const changeQuestionText = (event: any) => {
     const queText: string = event.target.value;
     updateSelectionQuestionText({ trackQuestionIndex, queText });
   };
 
+  const changeDescriptionText = (event: any) => {
+    const descText: string = event.target.value;
+    updateSelectionDescText({ trackQuestionIndex, descText });
+  };
+
+  const updateIndexElement = (event: any) => {};
+
   console.log(Question);
   return (
-    <div className={styles.selectionType}>
+    <div className={styles.selectionType} onClick={updateIndexElement}>
       <TextArea
         placeholder="Question Text..."
         bordered={false}
@@ -52,16 +67,19 @@ export const SelectionQuestionType: React.FC<Props> = ({
         size="large"
         value={Question.desc}
         autoSize
+        onChange={changeDescriptionText}
       />
-      <div style={{ display: "flex" }}>
-        <span>-</span>
-        <TextArea
-          placeholder="choices..."
-          bordered={false}
-          size="large"
-          autoSize
-        />
-      </div>
+      {Question.hasOwnProperty("choices") ? (
+        <div style={{ display: "flex" }}>
+          <span>-</span>
+          <TextArea
+            placeholder="choices..."
+            bordered={false}
+            size="large"
+            autoSize
+          />
+        </div>
+      ) : null}
     </div>
   );
 };
