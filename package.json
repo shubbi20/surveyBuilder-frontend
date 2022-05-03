@@ -11,11 +11,13 @@
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
     "antd": "^4.19.5",
+    "formik": "^2.2.9",
     "jotai": "^1.6.4",
     "next": "12.1.5",
     "react": "18.0.0",
     "react-dom": "18.0.0",
-    "sass": "^1.50.0"
+    "sass": "^1.50.0",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "@types/node": "17.0.24",
