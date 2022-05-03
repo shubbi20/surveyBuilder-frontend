@@ -9,7 +9,7 @@ interface props {
   description: string;
   toggleCheck: () => void;
 }
-const AudioQuestion: React.FC<props> = ({
+const RateQuestion: React.FC<props> = ({
   question,
   description,
   toggleCheck,
@@ -20,7 +20,7 @@ const AudioQuestion: React.FC<props> = ({
   }, []);
 
   const currentStart = (e: any) => {
-    console.log(e); //save the value here
+    console.log(e);
   };
 
   return (
@@ -28,32 +28,14 @@ const AudioQuestion: React.FC<props> = ({
       <div className={styles.typeContainer}>
         <div className={styles.previewQuestion}>{question}</div>
         <div className={styles.previewDescription}>{description}</div>
-        <Button
-          type="primary"
-          icon={<AudioOutlined />}
-          size="large"
-          onClick={toggleCheck}
-          style={{
-            marginBottom: "3.5em",
-            marginTop: "1em",
-            backgroundColor: "rgb(168, 58, 58)",
-            width: 130,
-            height: 50,
-            borderRadius: "9px",
-          }}
-        >
-          Record
-        </Button>
-
+        <Rate defaultValue={3} onChange={currentStart} />
+        <span className="ant-rate-text"></span>
+        <br />
         <Button
           type="primary"
           icon={<CheckOutlined />}
           size="large"
           onClick={toggleCheck}
-          style={{
-            width: 130,
-            height: 50,
-          }}
         >
           Finished
         </Button>
@@ -62,4 +44,4 @@ const AudioQuestion: React.FC<props> = ({
   );
 };
 
-export default AudioQuestion;
+export default RateQuestion;

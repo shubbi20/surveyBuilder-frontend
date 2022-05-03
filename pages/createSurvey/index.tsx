@@ -43,7 +43,11 @@ const CreateSurvey: NextPage = () => {
     let positionx = getPositionX(e) - Clientx;
     if (checkBox == 2) {
       // rightref.current.style.width = BoxWidth - positionx + 'px';
-      setrightWidth(BoxWidth - positionx);
+      if (BoxWidth - positionx < 542) {
+        setrightWidth(542);
+      } else {
+        setrightWidth(BoxWidth - positionx);
+      }
     }
   };
 

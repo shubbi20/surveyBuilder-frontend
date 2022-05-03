@@ -9,7 +9,7 @@ import {
 import { atomWithStorage, RESET, selectAtom } from "jotai/utils";
 import { useMemo } from "react";
 
-export const rightDivWidthAtom = atomWithStorage("rightDivWidth", 530);
+export const rightDivWidthAtom = atomWithStorage("rightDivWidth", 543);
 
 export interface Selectiontypeinterface {
   QuestionType: string;
