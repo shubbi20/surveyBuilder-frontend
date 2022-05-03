@@ -9,17 +9,38 @@ import {
 import { atomWithStorage, RESET, selectAtom } from "jotai/utils";
 import { useMemo } from "react";
 
-export const rightDivWidthAtom = atomWithStorage("rightDivWidth", 240);
+export const rightDivWidthAtom = atomWithStorage("rightDivWidth", 530);
 
 export interface Selectiontypeinterface {
+  QuestionType: string;
   Question: string;
   desc: string;
-  choices: [string];
+  choices?: [string];
 }
 
 export const selectionQuestionAtom = atomWithStorage<Selectiontypeinterface[]>(
   "atomarr",
   []
+);
+
+export const indexElementPreviewAtom = atomWithStorage<unknown>(
+  "indexElementPreview",
+  undefined
+);
+
+export const updateIndexPrevElementAtom = atom(
+  (get) => get(indexElementPreviewAtom),
+  (get, set, value: number) => {
+    set(indexElementPreviewAtom, value);
+  }
+);
+export const checkAtom = atom(false);
+
+export const toggleCheckAtom = atom(
+  (get) => get(checkAtom),
+  (get, set, value: boolean) => {
+    set(checkAtom, value);
+  }
 );
 
 export const addSelectionQuestionAtom = atom(
@@ -100,6 +121,26 @@ export const updateSelectionQuestionTextAtom = atom(
     set(
       selectionQuestionAtom,
       prev.map((ele, i) => (i === index ? { ...ele, Question: QueText } : ele))
+    );
+  }
+);
+
+export const updateSelectionDescTextAtom = atom(
+  null,
+  (
+    get,
+    set,
+    {
+      trackQuestionIndex,
+      descText,
+    }: { trackQuestionIndex: number; descText: string }
+  ) => {
+    const prev = get(selectionQuestionAtom);
+    const index = trackQuestionIndex;
+    const DescText = descText;
+    set(
+      selectionQuestionAtom,
+      prev.map((ele, i) => (i === index ? { ...ele, desc: DescText } : ele))
     );
   }
 );

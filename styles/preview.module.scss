@@ -1,0 +1,51 @@
+.previewContainer {
+  height: 100vh;
+  padding-top: 1.5em;
+}
+
+.previewTop {
+  //border: 2px solid palevioletred;
+  padding-left: 8px;
+  line-height: 5px;
+  color: rgba(194, 193, 193, 0.763);
+}
+
+.previewTop h1 {
+  color: rgba(255, 255, 255, 0.669) !important;
+  line-height: 23px !important;
+}
+
+.undefinedTypeImg {
+  height: 100%;
+  background-image: url("../images/gameOn.png");
+  background-repeat: no-repeat;
+  background-position: center 80px;
+  background-size: 350px 240px;
+}
+
+.typeContainer {
+  margin-top: 3em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.typeContainer div {
+  line-height: 38px;
+}
+.previewQuestion {
+  font-size: 2.2em;
+  color: white;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+.previewDescription {
+  font-size: 1.8em;
+  color: rgba(199, 199, 199, 0.858);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.textAreaPreview {
+  box-shadow: 0px 5px 20px rgb(92, 91, 91);
+  width: 28em;
+  height: 17em;
+}

@@ -4,6 +4,8 @@ import {
   selectionQuestionAtom,
   Selectiontypeinterface,
   addSelectionQuestionAtom,
+  updateIndexPrevElementAtom,
+  toggleCheckAtom,
 } from "../../state-machine/designer";
 import { useAtom } from "jotai";
 import styles from "../../styles/designer.module.scss";
@@ -27,8 +29,13 @@ export const SurveyBuilder: any = () => {
   }, []);
   // return mounted && <div>Run on client only</div>
 
+  const [check, setCheck] = useAtom(toggleCheckAtom);
   const [selectionQuestion] = useAtom(selectionQuestionAtom);
   const [isModalVisible, setIsModalVisible] = useState(false);
+
+  const [indexElementPreview, setIndexElementPreview] = useAtom(
+    updateIndexPrevElementAtom
+  );
 
   const showModal = () => {
     setIsModalVisible(true);
@@ -38,31 +45,40 @@ export const SurveyBuilder: any = () => {
     setIsModalVisible(false);
   };
 
-  function handleQuestion() {
-    const obj: Selectiontypeinterface = {
-      Question: "",
-      desc: "",
-      choices: [""],
+  function handleQuestion(questionType: string) {
+    return () => {
+      const obj: Selectiontypeinterface = {
+        QuestionType: questionType,
+        Question: "",
+        desc: "",
+      };
+      addSelectionQuestion(obj);
+      setIsModalVisible(false);
     };
-    addSelectionQuestion(obj);
-    setIsModalVisible(false);
   }
 
-  // const handleQuestion = (Qtype: string) => {
-  //   return () => {
-  //     const obj: Selectiontypeinterface = {
-  //       QuestionType: Qtype,
-  //       Question: "",
-  //       desc: "",
-  //       choices: [""],
-  //     };
-  //     addSelectionQuestion(obj);
-  //     setIsModalVisible(false);
-  //   };
-  // };
+  function handleSelectionQuestion(questionType: string) {
+    return () => {
+      const obj: Selectiontypeinterface = {
+        QuestionType: questionType,
+        Question: "",
+        desc: "",
+        choices: [""],
+      };
+      addSelectionQuestion(obj);
+      setIsModalVisible(false);
+    };
+  }
 
   const handleCancel = () => {
     setIsModalVisible(false);
+  };
+
+  const updateIndexEle = (index: number) => {
+    return () => {
+      setIndexElementPreview(index);
+      setCheck(false);
+    };
   };
 
   return (
@@ -72,7 +88,11 @@ export const SurveyBuilder: any = () => {
         {selectionQuestion.length > 0
           ? selectionQuestion.map((elem: any, index: number) => {
               return (
-                <div key={index} style={{ margin: "3px 1px" }}>
+                <div
+                  key={index}
+                  style={{ margin: "3px 1px" }}
+                  onClick={updateIndexEle(index)}
+                >
                   <SelectionQuestionType trackQuestionIndex={index} />
                 </div>
               );
@@ -90,29 +110,32 @@ export const SurveyBuilder: any = () => {
           onOk={handleCancel}
         >
           <QuestionType
-            handlefunc={handleQuestion}
+            handlefunc={handleSelectionQuestion("selectionQuestion")}
             Quesicon={(<UnorderedListOutlined />) as any}
             Questype={"Selection"}
             Quesdesc={"choose from a set of options"}
           ></QuestionType>
 
           <QuestionType
+            handlefunc={handleQuestion("audioQuestion")}
             Quesicon={(<AudioOutlined />) as any}
             Questype={"Audio"}
             Quesdesc={"speak into a microphone"}
           ></QuestionType>
 
           <QuestionType
+            handlefunc={handleQuestion("textQuestion")}
             Quesicon={(<FormOutlined />) as any}
             Questype={"Open Text"}
             Quesdesc={"type in a textbox"}
           ></QuestionType>
 
-          {/* <QuestionType
-          Quesicon={(<StarOutlined />) as any}
-          Questype={"Rating"}
-          Quesdesc={"give your rating"}
-        ></QuestionType> */}
+          <QuestionType
+            handlefunc={handleQuestion("ratingQuestion")}
+            Quesicon={(<StarOutlined />) as any}
+            Questype={"Rating"}
+            Quesdesc={"give your rating"}
+          ></QuestionType>
 
           <p>Some contents...</p>
         </Modal>

@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { MenuBar } from "../../component/menuBar";
 import { SurveyBuilder } from "../../component/surveyBuilder/surveyBuilder";
 import { rightDivWidthAtom } from "../../state-machine/designer";
-
+import Preview from "../../component/previewComponent/preview";
 import styles from "../../styles/createSurvey.module.scss";
 
 const CreateSurvey: NextPage = () => {
@@ -80,10 +80,11 @@ const CreateSurvey: NextPage = () => {
           style={{
             width: rightwidthLocal,
             height: "100%",
-            backgroundColor: "#5bccf6",
+            backgroundColor: "#206a85",
           }}
         >
-          <h1>this is right box {rightwidthLocal}</h1>
+          {/* <p>this is right box {rightwidthLocal}</p> */}
+          <Preview />
         </div>
       </div>
     </>
