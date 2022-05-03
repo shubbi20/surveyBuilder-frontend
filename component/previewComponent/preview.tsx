@@ -11,6 +11,7 @@ import Finish from "./finish";
 import gameOn from "../../images/gameOn.png";
 import { Descriptions } from "antd";
 import { useEffect, useState } from "react";
+import AudioQuestion from "./audioQuestionType";
 /**
  * QuestionType
  * selectionQuestion
@@ -57,6 +58,19 @@ const Preview: React.FC<any> = (): false | any => {
         selectionQuestion[indexOfElement].QuestionType === "textQuestion" &&
         !check ? (
           <TextQuestionType
+            question={selectionQuestion[indexOfElement].Question}
+            description={selectionQuestion[indexOfElement].desc}
+            toggleCheck={toggleCheck}
+          />
+        ) : null}
+
+        {/**
+         * for AudioType
+         */}
+        {typeof indexOfElement === "number" &&
+        selectionQuestion[indexOfElement].QuestionType === "audioQuestion" &&
+        !check ? (
+          <AudioQuestion
             question={selectionQuestion[indexOfElement].Question}
             description={selectionQuestion[indexOfElement].desc}
             toggleCheck={toggleCheck}
