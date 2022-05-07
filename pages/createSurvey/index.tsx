@@ -70,7 +70,6 @@ const CreateSurvey: NextPage = () => {
       >
         {/* box 2 */}
         <div className={styles.middleBox}>
-          <h1>Left-box</h1>
           <SurveyBuilder />
         </div>
         <div

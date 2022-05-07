@@ -11,6 +11,13 @@ import { useMemo } from "react";
 
 export const rightDivWidthAtom = atomWithStorage("rightDivWidth", 543);
 
+export const surveyAtom = atomWithStorage("survey", "");
+
+export const surveyNameAtom = atom(
+  (get) => get(surveyAtom),
+  (get, set, name: string) => set(surveyAtom, name)
+);
+
 export interface Selectiontypeinterface {
   QuestionType: string;
   Question: string;

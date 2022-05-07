@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Modal, Button } from "antd";
+import { Modal, Button, Input } from "antd";
 import {
   selectionQuestionAtom,
   Selectiontypeinterface,
   addSelectionQuestionAtom,
   updateIndexPrevElementAtom,
   toggleCheckAtom,
+  surveyNameAtom,
 } from "../../state-machine/designer";
 import { useAtom } from "jotai";
 import styles from "../../styles/designer.module.scss";
@@ -28,6 +29,8 @@ export const SurveyBuilder: any = () => {
     setMounted(true);
   }, []);
   // return mounted && <div>Run on client only</div>
+
+  const [surveyName, setSurveyName] = useAtom(surveyNameAtom);
 
   const [check, setCheck] = useAtom(toggleCheckAtom);
   const [selectionQuestion] = useAtom(selectionQuestionAtom);
@@ -83,8 +86,17 @@ export const SurveyBuilder: any = () => {
 
   return (
     mounted && (
-      <div className={styles.surveybuilder} suppressHydrationWarning={true}>
-        <h1>survey Builder</h1>
+      <div className={styles.surveybuilder}>
+        <Input
+          placeholder="Create Your Survey name"
+          value={surveyName}
+          onChange={(e: any) => {
+            setSurveyName(e.target.value);
+          }}
+          maxLength={32}
+          allowClear={true}
+          showCount
+        />
         {selectionQuestion.length > 0
           ? selectionQuestion.map((elem: any, index: number) => {
               return (
@@ -99,9 +111,18 @@ export const SurveyBuilder: any = () => {
             })
           : null}
 
-        <Button type="primary" onClick={showModal}>
+        <Button
+          type="primary"
+          onClick={showModal}
+          style={{ marginRight: "15px", marginTop: "15px" }}
+        >
           +New Question
         </Button>
+        {selectionQuestion.length > 0 ? (
+          <Button type="primary" style={{ marginTop: "15px" }}>
+            Save Survey
+          </Button>
+        ) : null}
 
         <Modal
           title="Add Item to Survey"

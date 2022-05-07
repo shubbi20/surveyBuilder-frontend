@@ -76,6 +76,8 @@ export const SelectionQuestionType: React.FC<Props> = ({
                 <span>-</span>
                 <Input
                   placeholder="choices"
+                  showCount
+                  maxLength={42}
                   value={Question.choices[index]}
                   onChange={(e: any) => {
                     console.log("shubbi", e.target.value);
