@@ -45,17 +45,17 @@ export const SurveyBuilder: any = () => {
     setIsModalVisible(false);
   };
 
-  function handleQuestion(questionType: string) {
-    return () => {
-      const obj: Selectiontypeinterface = {
-        QuestionType: questionType,
-        Question: "",
-        desc: "",
-      };
-      addSelectionQuestion(obj);
-      setIsModalVisible(false);
-    };
-  }
+  // function handleQuestion(questionType: string) {
+  //   return () => {
+  //     const obj: Selectiontypeinterface = {
+  //       QuestionType: questionType,
+  //       Question: "",
+  //       desc: "",
+  //     };
+  //     addSelectionQuestion(obj);
+  //     setIsModalVisible(false);
+  //   };
+  // }
 
   function handleSelectionQuestion(questionType: string) {
     return () => {
@@ -117,21 +117,21 @@ export const SurveyBuilder: any = () => {
           ></QuestionType>
 
           <QuestionType
-            handlefunc={handleQuestion("audioQuestion")}
+            handlefunc={handleSelectionQuestion("audioQuestion")}
             Quesicon={(<AudioOutlined />) as any}
             Questype={"Audio"}
             Quesdesc={"speak into a microphone"}
           ></QuestionType>
 
           <QuestionType
-            handlefunc={handleQuestion("textQuestion")}
+            handlefunc={handleSelectionQuestion("textQuestion")}
             Quesicon={(<FormOutlined />) as any}
             Questype={"Open Text"}
             Quesdesc={"type in a textbox"}
           ></QuestionType>
 
           <QuestionType
-            handlefunc={handleQuestion("ratingQuestion")}
+            handlefunc={handleSelectionQuestion("ratingQuestion")}
             Quesicon={(<StarOutlined />) as any}
             Questype={"Rating"}
             Quesdesc={"give your rating"}
