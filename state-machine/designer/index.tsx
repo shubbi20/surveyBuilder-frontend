@@ -11,6 +11,8 @@ import { useMemo } from "react";
 
 export const rightDivWidthAtom = atomWithStorage("rightDivWidth", 543);
 
+export const tokenAtom = atomWithStorage("authToken", "");
+
 export const surveyAtom = atomWithStorage("survey", "");
 
 export const surveyNameAtom = atom(

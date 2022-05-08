@@ -83,6 +83,13 @@ export const SurveyBuilder: any = () => {
       setCheck(false);
     };
   };
+  const handleRef = (el: any) => {
+    // console.log("hey", el);
+    if (!el) {
+      return;
+    }
+    el.scrollIntoView();
+  };
 
   return (
     mounted && (
@@ -114,12 +121,16 @@ export const SurveyBuilder: any = () => {
         <Button
           type="primary"
           onClick={showModal}
-          style={{ marginRight: "15px", marginTop: "15px" }}
+          style={{ margin: "15px 15px 60px 5px" }}
         >
           +New Question
         </Button>
         {selectionQuestion.length > 0 ? (
-          <Button type="primary" style={{ marginTop: "15px" }}>
+          <Button
+            ref={handleRef}
+            type="primary"
+            style={{ margin: "15px 15px 60px 1px" }}
+          >
             Save Survey
           </Button>
         ) : null}
