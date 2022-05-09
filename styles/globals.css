@@ -16,3 +16,18 @@ a {
   padding: 0;
   margin: 0;
 }
+
+.success-msg,
+.error-msg {
+  text-align: center;
+  text-transform: capitalize;
+  margin: 20px;
+}
+
+.error-msg {
+  color: red;
+}
+
+.success-msg {
+  color: green;
+}

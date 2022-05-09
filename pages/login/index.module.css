@@ -1,0 +1,31 @@
+.container {
+  padding: 50px 0;
+  width: calc(100% - 40px);
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form_container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.submit_btn {
+  width: 250px;
+  height: 50px;
+  border: 0;
+  margin: 0 auto;
+  margin-top: 20px;
+  border-radius: 999px;
+  background-color: rgb(14, 167, 238);
+  font-size: 18px;
+  font-weight: 600;
+  color: white;
+  cursor: pointer;
+}
