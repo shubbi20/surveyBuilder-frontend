@@ -1,18 +1,16 @@
 import styles from "../../styles/preview.module.scss";
 import {
   indexElementPreviewAtom,
-  updateIndexPrevElementAtom,
   selectionQuestionAtom,
   toggleCheckAtom,
 } from "../../state-machine/designer";
 import { useAtom } from "jotai";
 import TextQuestionType from "./textQuestionType";
 import Finish from "./finish";
-import gameOn from "../../images/gameOn.png";
-import { Descriptions } from "antd";
 import { useEffect, useState } from "react";
 import AudioQuestion from "./audioQuestionType";
 import RateQuestion from "./rateQuestionType";
+import SelectionQuestion from "./selectionQuestionType";
 /**
  * QuestionType
  * selectionQuestion
@@ -84,6 +82,18 @@ const Preview: React.FC<any> = (): false | any => {
           <RateQuestion
             question={selectionQuestion[indexOfElement].Question}
             description={selectionQuestion[indexOfElement].desc}
+            toggleCheck={toggleCheck}
+          />
+        ) : null}
+
+        {typeof indexOfElement === "number" &&
+        selectionQuestion[indexOfElement].QuestionType ===
+          "selectionQuestion" &&
+        !check ? (
+          <SelectionQuestion
+            question={selectionQuestion[indexOfElement].Question}
+            description={selectionQuestion[indexOfElement].desc}
+            choices={selectionQuestion[indexOfElement].choices}
             toggleCheck={toggleCheck}
           />
         ) : null}

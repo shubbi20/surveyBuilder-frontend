@@ -68,9 +68,8 @@ const CreateSurvey: NextPage = () => {
         onTouchEnd={dragEnd}
         onMouseUp={dragEnd}
       >
-        {/* box 2 */}
+        {/* box 1 */}
         <div className={styles.middleBox}>
-          <h1>Left-box</h1>
           <SurveyBuilder />
         </div>
         <div
@@ -79,7 +78,7 @@ const CreateSurvey: NextPage = () => {
           onTouchStart={initialBoxTwo}
         ></div>
 
-        {/* box 3 */}
+        {/* box 2 */}
         <div
           style={{
             width: rightwidthLocal,

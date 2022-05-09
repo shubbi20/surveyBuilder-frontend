@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Modal, Button } from "antd";
+import { Modal, Button, Input } from "antd";
 import {
   selectionQuestionAtom,
   Selectiontypeinterface,
   addSelectionQuestionAtom,
   updateIndexPrevElementAtom,
   toggleCheckAtom,
+  surveyNameAtom,
 } from "../../state-machine/designer";
 import { useAtom } from "jotai";
 import styles from "../../styles/designer.module.scss";
@@ -29,6 +30,8 @@ export const SurveyBuilder: any = () => {
   }, []);
   // return mounted && <div>Run on client only</div>
 
+  const [surveyName, setSurveyName] = useAtom(surveyNameAtom);
+
   const [check, setCheck] = useAtom(toggleCheckAtom);
   const [selectionQuestion] = useAtom(selectionQuestionAtom);
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -45,17 +48,17 @@ export const SurveyBuilder: any = () => {
     setIsModalVisible(false);
   };
 
-  function handleQuestion(questionType: string) {
-    return () => {
-      const obj: Selectiontypeinterface = {
-        QuestionType: questionType,
-        Question: "",
-        desc: "",
-      };
-      addSelectionQuestion(obj);
-      setIsModalVisible(false);
-    };
-  }
+  // function handleQuestion(questionType: string) {
+  //   return () => {
+  //     const obj: Selectiontypeinterface = {
+  //       QuestionType: questionType,
+  //       Question: "",
+  //       desc: "",
+  //     };
+  //     addSelectionQuestion(obj);
+  //     setIsModalVisible(false);
+  //   };
+  // }
 
   function handleSelectionQuestion(questionType: string) {
     return () => {
@@ -80,11 +83,27 @@ export const SurveyBuilder: any = () => {
       setCheck(false);
     };
   };
+  const handleRef = (el: any) => {
+    // console.log("hey", el);
+    if (!el) {
+      return;
+    }
+    el.scrollIntoView();
+  };
 
   return (
     mounted && (
-      <div className={styles.surveybuilder} suppressHydrationWarning={true}>
-        <h1>survey Builder</h1>
+      <div className={styles.surveybuilder}>
+        <Input
+          placeholder="Create Your Survey name"
+          value={surveyName}
+          onChange={(e: any) => {
+            setSurveyName(e.target.value);
+          }}
+          maxLength={32}
+          allowClear={true}
+          showCount
+        />
         {selectionQuestion.length > 0
           ? selectionQuestion.map((elem: any, index: number) => {
               return (
@@ -99,9 +118,22 @@ export const SurveyBuilder: any = () => {
             })
           : null}
 
-        <Button type="primary" onClick={showModal}>
+        <Button
+          type="primary"
+          onClick={showModal}
+          style={{ margin: "15px 15px 60px 5px" }}
+        >
           +New Question
         </Button>
+        {selectionQuestion.length > 0 ? (
+          <Button
+            ref={handleRef}
+            type="primary"
+            style={{ margin: "15px 15px 60px 1px" }}
+          >
+            Save Survey
+          </Button>
+        ) : null}
 
         <Modal
           title="Add Item to Survey"
@@ -117,21 +149,21 @@ export const SurveyBuilder: any = () => {
           ></QuestionType>
 
           <QuestionType
-            handlefunc={handleQuestion("audioQuestion")}
+            handlefunc={handleSelectionQuestion("audioQuestion")}
             Quesicon={(<AudioOutlined />) as any}
             Questype={"Audio"}
             Quesdesc={"speak into a microphone"}
           ></QuestionType>
 
           <QuestionType
-            handlefunc={handleQuestion("textQuestion")}
+            handlefunc={handleSelectionQuestion("textQuestion")}
             Quesicon={(<FormOutlined />) as any}
             Questype={"Open Text"}
             Quesdesc={"type in a textbox"}
           ></QuestionType>
 
           <QuestionType
-            handlefunc={handleQuestion("ratingQuestion")}
+            handlefunc={handleSelectionQuestion("ratingQuestion")}
             Quesicon={(<StarOutlined />) as any}
             Questype={"Rating"}
             Quesdesc={"give your rating"}

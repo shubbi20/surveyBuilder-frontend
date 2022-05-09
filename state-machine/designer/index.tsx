@@ -11,11 +11,20 @@ import { useMemo } from "react";
 
 export const rightDivWidthAtom = atomWithStorage("rightDivWidth", 543);
 
+export const tokenAtom = atomWithStorage("authToken", "");
+
+export const surveyAtom = atomWithStorage("survey", "");
+
+export const surveyNameAtom = atom(
+  (get) => get(surveyAtom),
+  (get, set, name: string) => set(surveyAtom, name)
+);
+
 export interface Selectiontypeinterface {
   QuestionType: string;
   Question: string;
   desc: string;
-  choices?: [string];
+  choices: string[];
 }
 
 export const selectionQuestionAtom = atomWithStorage<Selectiontypeinterface[]>(
@@ -78,29 +87,19 @@ const updateQuestion = (
   }));
 };
 
-// export const useAttributeAtom = ({
-//   selectionQuestionAtom,
-//   trackQuestionIndex,
-// }: {
-//   selectionQuestionAtom: WritableAtom<
-//     Selectiontypeinterface[],
-//     typeof RESET | SetStateAction<Selectiontypeinterface[]>,
-//     void
-//   >;
-//   trackQuestionIndex: number;
-// }) => {
-//   return useMemo(() => {
-//     return focusAtom(
-//       selectionQuestionAtom,
-//       (optic: any) => optic.at(trackQuestionIndex).Question,
-//     );
-//   }, [selectionQuestionAtom, trackQuestionIndex]);
-// };
-
 export const selectionEleAtSpecificIndexAtom = (index: any) => {
   const anAtom = useMemo(
-    () => atom((get) => get(selectionQuestionAtom)[index]),
-    [index]
+    () =>
+      atom(
+        (get) => get(selectionQuestionAtom)[index],
+        (get, set) => {
+          set(
+            selectionQuestionAtom,
+            addChoices(get(selectionQuestionAtom), index)
+          );
+        }
+      ),
+    [useAtomValue(selectionQuestionAtom)[index].choices.length]
   );
   return anAtom;
 };
@@ -144,3 +143,62 @@ export const updateSelectionDescTextAtom = atom(
     );
   }
 );
+
+export const updateChoicesAtom = atom(
+  null,
+  (
+    get,
+    set,
+    {
+      index,
+      trackQuestionIndex,
+      choicesText,
+    }: { index: number; trackQuestionIndex: number; choicesText: any }
+  ) => {
+    set(
+      selectionQuestionAtom,
+      updateChoices(
+        get(selectionQuestionAtom),
+        trackQuestionIndex,
+        index,
+        choicesText
+      )
+    );
+  }
+);
+
+const updateChoices = (
+  selectquestion: Selectiontypeinterface[],
+  trackQuestionIndex: number,
+  choicesindex: number,
+  choicesText: string
+) => {
+  selectquestion[trackQuestionIndex].choices[choicesindex] = choicesText;
+  return [...selectquestion];
+};
+
+export const deleteChoicesAtom = atom(
+  null,
+  (get, set, trackQuestionIndex: number) => {
+    set(
+      selectionQuestionAtom,
+      deleteChoices(get(selectionQuestionAtom), trackQuestionIndex)
+    );
+  }
+);
+
+const deleteChoices = (
+  selectquestion: Selectiontypeinterface[],
+  trackQuestionIndex: number
+) => {
+  selectquestion[trackQuestionIndex].choices.pop();
+  return selectquestion;
+};
+
+const addChoices = (
+  selectquestion: Selectiontypeinterface[],
+  trackQuestionIndex: number
+) => {
+  selectquestion[trackQuestionIndex].choices.push("");
+  return selectquestion;
+};

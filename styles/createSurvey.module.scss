@@ -19,7 +19,7 @@
 
 .mainBox {
   display: flex;
-  height: 100vh;
+  height: calc(100vh - 65px);
   overflow-x: hidden;
 }
 
@@ -33,7 +33,9 @@
   background-color: white;
   flex-grow: 2;
   height: 100%;
-  // text-align: center;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  // margin-bottom: 15px;
 }
 
 .modalContainer:hover {

@@ -1,16 +1,14 @@
 import "antd/dist/antd.css";
-import { Input } from "antd";
+import { Button, Input } from "antd";
 import styles from "../../styles/designer.module.scss";
 import {
-  selectionQuestionAtom,
-  Selectiontypeinterface,
-  updateIndexPrevElementAtom,
   updateSelectionDescTextAtom,
   updateSelectionQuestionTextAtom,
   selectionEleAtSpecificIndexAtom,
+  deleteChoicesAtom,
+  updateChoicesAtom,
 } from "../../state-machine/designer";
 import { useAtom } from "jotai";
-import { focusAtom } from "jotai/optics";
 
 interface Props extends React.PropsWithChildren<any> {
   trackQuestionIndex: number;
@@ -24,19 +22,17 @@ export const SelectionQuestionType: React.FC<Props> = ({
   /**
    * custom derived Atom
    */
-  const [Question] = useAtom(
+  const [Question, addchoicesQuestion] = useAtom(
     selectionEleAtSpecificIndexAtom(trackQuestionIndex)
   );
+  const [, deleteChoices] = useAtom(deleteChoicesAtom);
+  const [, updateChoices] = useAtom(updateChoicesAtom);
 
   const [, updateSelectionQuestionText] = useAtom(
     updateSelectionQuestionTextAtom
   );
 
   const [, updateSelectionDescText] = useAtom(updateSelectionDescTextAtom);
-
-  // const [indexElementPreview, setIndexElementPreview] = useAtom(
-  //   updateIndexPrevElement
-  // );
 
   const changeQuestionText = (event: any) => {
     const queText: string = event.target.value;
@@ -49,6 +45,8 @@ export const SelectionQuestionType: React.FC<Props> = ({
   };
 
   const updateIndexElement = (event: any) => {};
+
+  const val = <Button value="addchoices"></Button>;
 
   console.log(Question);
   return (
@@ -69,15 +67,42 @@ export const SelectionQuestionType: React.FC<Props> = ({
         autoSize
         onChange={changeDescriptionText}
       />
-      {Question.hasOwnProperty("choices") ? (
-        <div style={{ display: "flex" }}>
-          <span>-</span>
-          <TextArea
-            placeholder="choices..."
-            bordered={false}
-            size="large"
-            autoSize
-          />
+
+      {Question.QuestionType === "selectionQuestion" ? (
+        <div>
+          {Question.choices.map((ele, index) => {
+            return (
+              <div style={{ display: "flex" }}>
+                <span>-</span>
+                <Input
+                  placeholder="choices"
+                  showCount
+                  maxLength={42}
+                  value={Question.choices[index]}
+                  onChange={(e: any) => {
+                    console.log("shubbi", e.target.value);
+                    const choicesText = e.target.value;
+                    updateChoices({ index, trackQuestionIndex, choicesText });
+                  }}
+                />
+              </div>
+            );
+          })}
+          <button
+            style={{ margin: "10px" }}
+            onClick={() => {
+              addchoicesQuestion(trackQuestionIndex);
+            }}
+          >
+            +add
+          </button>
+          <button
+            onClick={() => {
+              deleteChoices(trackQuestionIndex);
+            }}
+          >
+            delete
+          </button>
         </div>
       ) : null}
     </div>
