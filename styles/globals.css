@@ -32,3 +32,54 @@ a {
 .success-msg {
   color: green;
 }
+
+.surveys-container {
+  width: calc(100% - 40px);
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 30px 0;
+}
+
+.survey-card {
+  display: flex;
+  gap: 20px;
+  width: 500px;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.survey-card__details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.survey-card img {
+  width: 120px;
+  height: 120px;
+}
+
+.surveys-container h2 {
+  text-align: center;
+  font-size: 30px;
+  color: gray;
+  margin-bottom: 30px;
+}
+
+.btn {
+  width: 200px;
+  height: 40px;
+  border: 0;
+  margin: 0 auto;
+  margin-top: 20px;
+  border-radius: 999px;
+  background-color: rgb(14, 167, 238);
+  font-size: 18px;
+  font-weight: 600;
+  color: white;
+  cursor: pointer;
+}
