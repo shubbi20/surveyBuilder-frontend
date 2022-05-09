@@ -1,5 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { MenuBar } from "../../component/menuBar";
+
+import { tokenAtom } from "../../state-machine/designer/index";
+import { useAtom } from "jotai";
 
 import { useFormik } from "formik";
 import * as Yup from "yup";
@@ -11,6 +14,11 @@ import Loader from "../Loader";
 import styles from "./index.module.css";
 
 const Signup = () => {
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+  const [token, setToken] = useAtom(tokenAtom);
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState({
     username: "",
@@ -43,6 +51,10 @@ const Signup = () => {
       const [data, error] = await login({ username, password });
       console.log("Data", data);
       setData(data);
+      if (data) {
+        console.log(data.token);
+        setToken(data.token);
+      }
       console.log("Error", error);
       setError(error);
       setLoading(false);
@@ -50,32 +62,37 @@ const Signup = () => {
     },
   });
   return (
-    <div>
-      <MenuBar />
-      <div className={styles.container}>
-        <h2>Login</h2>
-        <form onSubmit={formik.handleSubmit} className={styles.form_container}>
-          <Input
-            label="Username"
-            name="username"
-            placeholder="Enter Username"
-            formik={formik}
-          />
-          <Input
-            label="Password"
-            name="password"
-            placeholder="Enter Password"
-            formik={formik}
-          />
-          <button className={styles.submit_btn} type="submit">
-            Submit
-          </button>
-        </form>
-        {loading && <Loader />}
-        {error && <p className="error-msg">{error.error}</p>}
-        {data.token && <p className="success-msg">Logged In Success</p>}
+    mounted && (
+      <div>
+        <MenuBar />
+        <div className={styles.container}>
+          <h2>Login</h2>
+          <form
+            onSubmit={formik.handleSubmit}
+            className={styles.form_container}
+          >
+            <Input
+              label="Username"
+              name="username"
+              placeholder="Enter Username"
+              formik={formik}
+            />
+            <Input
+              label="Password"
+              name="password"
+              placeholder="Enter Password"
+              formik={formik}
+            />
+            <button className={styles.submit_btn} type="submit">
+              Submit
+            </button>
+          </form>
+          {loading && <Loader />}
+          {error && <p className="error-msg">{error.error}</p>}
+          {data.token && <p className="success-msg">Logged In Success</p>}
+        </div>
       </div>
-    </div>
+    )
   );
 };
 
