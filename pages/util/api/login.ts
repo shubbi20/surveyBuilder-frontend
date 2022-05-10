@@ -20,7 +20,13 @@ const login = async ({ username, password }: any) => {
     }
 
     return [data, null];
-  } catch (err) {
+  } catch (err: any) {
+    if (err.error) {
+      return [null, err];
+    }
+    err = {
+      error: "Failed to fetch data",
+    };
     return [null, err];
   }
 };
