@@ -7,6 +7,7 @@ import {
   updateIndexPrevElementAtom,
   toggleCheckAtom,
   surveyNameAtom,
+  tokenAtom,
 } from "../../state-machine/designer";
 import { useAtom } from "jotai";
 import styles from "../../styles/designer.module.scss";
@@ -18,6 +19,7 @@ import {
 } from "@ant-design/icons";
 import { QuestionType } from "./questionType";
 import { SelectionQuestionType } from "./selectionType";
+import createSurveyApi from "../../pages/util/api/createSurveyApi";
 
 interface Props extends React.PropsWithChildren<any> {}
 
@@ -90,6 +92,10 @@ export const SurveyBuilder: any = () => {
     }
     el.scrollIntoView();
   };
+  const [token, setToken] = useAtom(tokenAtom);
+  const handleSaveSurvey = async () => {
+    await createSurveyApi({ surveyName, selectionQuestion, token });
+  };
 
   return (
     mounted && (
@@ -130,6 +136,7 @@ export const SurveyBuilder: any = () => {
             ref={handleRef}
             type="primary"
             style={{ margin: "15px 15px 60px 1px" }}
+            onClick={handleSaveSurvey}
           >
             Save Survey
           </Button>

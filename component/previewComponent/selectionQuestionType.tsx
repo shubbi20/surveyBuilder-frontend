@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import { Button } from "antd";
 import { CheckOutlined } from "@ant-design/icons";
 import { Radio, Input, Space } from "antd";
+import {tokenAtom} from '../../state-machine/designer/index';
+
 
 interface props {
   question: string;
@@ -25,7 +27,7 @@ const SelectionQuestion: React.FC<props> = ({
   const onRadioChange = (e: any) => {
     console.log("radio checked", e.target.value);
   };
-
+  
   return (
     mounted && (
       <div className={styles.typeContainer}>

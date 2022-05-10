@@ -89,7 +89,9 @@ const Signup = () => {
           </form>
           {loading && <Loader />}
           {error && <p className="error-msg">{error.error}</p>}
-          {data.token && <p className="success-msg">Logged In Success</p>}
+          {data && data.token && (
+            <p className="success-msg">Logged In Success</p>
+          )}
         </div>
       </div>
     )
