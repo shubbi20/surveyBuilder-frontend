@@ -1,0 +1,25 @@
+.container {
+  //   height: calc(100% - 85px);
+  margin: 15px 20px;
+  border: 1px solid palegreen;
+}
+
+.previewTop {
+  line-height: 35px;
+  color: rgb(131, 131, 131);
+}
+
+.previewTop p {
+  font-size: medium;
+}
+
+.previewTop h1 {
+  font-family: "Times New Roman", Times, serif;
+  font-size: larger;
+}
+
+.midContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}

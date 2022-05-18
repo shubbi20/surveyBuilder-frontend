@@ -12,8 +12,10 @@ import login from "../util/api/login";
 import Loader from "../Loader";
 
 import styles from "./index.module.css";
+import { useRouter } from "next/router";
 
 const Signup = () => {
+  const router = useRouter();
   const [mounted, setMounted] = useState(false);
   useEffect(() => {
     setMounted(true);
@@ -54,6 +56,7 @@ const Signup = () => {
       if (data) {
         console.log(data.token);
         setToken(data.token);
+        router.push("home");
       }
       console.log("Error", error);
       setError(error);

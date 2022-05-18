@@ -46,10 +46,10 @@ export const MenuBar = () => {
             </div>
             <div
               className={
-                router.pathname == "/attempSurvey" ? styles.active : ""
+                router.pathname == "/attemptSurvey" ? styles.active : ""
               }
               style={{ marginRight: "1.7em" }}
-              onClick={handleClick("attempSurvey")}
+              onClick={handleClick("attemptSurvey")}
             >
               attemptSurvey
             </div>
@@ -68,7 +68,7 @@ export const MenuBar = () => {
             </div>
             <div
               className={
-                router.pathname == "/attempSurvey" ? styles.active : ""
+                router.pathname == "/attemptSurvey" ? styles.active : ""
               }
               style={{ marginRight: "1.7em" }}
               onClick={handleClick("login")}

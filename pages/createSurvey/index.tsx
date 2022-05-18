@@ -7,7 +7,7 @@ import { rightDivWidthAtom } from "../../state-machine/designer";
 import Preview from "../../component/previewComponent/preview";
 import styles from "../../styles/createSurvey.module.scss";
 
-const CreateSurvey: NextPage = () => {
+const CreateSurvey: any = () => {
   const [statuscheck, setStatusCheck] = useState(false);
   const [checkBox, setCheckBox] = useState(0);
 
@@ -56,41 +56,48 @@ const CreateSurvey: NextPage = () => {
     setCheckBox(0);
   };
 
-  return (
-    <>
-      <MenuBar />
-      <div
-        className={styles.mainBox}
-        onMouseMove={resize}
-        onTouchMove={resize}
-        onMouseLeave={dragEnd}
-        onTouchCancel={dragEnd}
-        onTouchEnd={dragEnd}
-        onMouseUp={dragEnd}
-      >
-        {/* box 1 */}
-        <div className={styles.middleBox}>
-          <SurveyBuilder />
-        </div>
-        <div
-          id={styles.draggable}
-          onMouseDown={initialBoxTwo}
-          onTouchStart={initialBoxTwo}
-        ></div>
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
-        {/* box 2 */}
+  return (
+    mounted && (
+      <>
+        <MenuBar />
         <div
-          style={{
-            width: rightwidthLocal,
-            height: "100%",
-            backgroundColor: "#206a85",
-          }}
+          className={styles.mainBox}
+          onMouseMove={resize}
+          onTouchMove={resize}
+          onMouseLeave={dragEnd}
+          onTouchCancel={dragEnd}
+          onTouchEnd={dragEnd}
+          onMouseUp={dragEnd}
         >
-          {/* <p>this is right box {rightwidthLocal}</p> */}
-          <Preview />
+          {/* box 1 */}
+          <div className={styles.middleBox}>
+            <SurveyBuilder />
+          </div>
+          <div
+            id={styles.draggable}
+            onMouseDown={initialBoxTwo}
+            onTouchStart={initialBoxTwo}
+          ></div>
+
+          {/* box 2 */}
+          <div
+            style={{
+              width: rightwidthLocal,
+              height: "100%",
+              backgroundColor: "#206a85",
+            }}
+          >
+            {/* <p>this is right box {rightwidthLocal}</p> */}
+            <Preview />
+          </div>
         </div>
-      </div>
-    </>
+      </>
+    )
   );
 };
 
