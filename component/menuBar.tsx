@@ -4,6 +4,7 @@ import gameOn from "../images/gameOn.png";
 import { tokenAtom } from "../state-machine/designer/index";
 import { useAtom } from "jotai";
 import Link from "next/link";
+import Image from "next/image";
 
 const url: string = gameOn.src;
 
@@ -13,12 +14,14 @@ export const MenuBar = () => {
 
   return (
     <div className={styles.container1}>
-      <img
+      <Image
         style={{
           boxSizing: "border-box",
           marginLeft: "0.2em",
           height: "3.2em",
         }}
+        width={60}
+        height={60}
         src={url}
         alt="logo"
       />

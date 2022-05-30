@@ -7,6 +7,7 @@ import {
   UsergroupDeleteOutlined,
 } from "@ant-design/icons";
 import React from "react";
+import Image from "next/image";
 
 export const HomeContent = () => {
   return (
@@ -25,11 +26,7 @@ export const HomeContent = () => {
           </p>
         </div>
         <div className={styles.rightBox}>
-          <img
-            src={surveyRocketo.src}
-            style={{ height: "100%", width: "100%" }}
-            alt="logo"
-          />
+          <Image src={surveyRocketo.src} height={280} width={350} alt="logo" />
         </div>
       </div>
 
