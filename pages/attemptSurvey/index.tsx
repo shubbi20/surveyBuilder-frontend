@@ -6,7 +6,7 @@ import { useAtom } from "jotai";
 import { useRouter } from "next/router";
 import getAllSurveys from "../../api/getAllSurveys";
 import surveyPic from "../../images/survey.png";
-
+import Image from "next/image";
 export default function AllSurveys() {
   const [mounted, setMounted] = useState(false);
   useEffect(() => {
@@ -56,7 +56,12 @@ export default function AllSurveys() {
                 return (
                   <div className="survey-card" key={index}>
                     <div className="survey-card__img">
-                      <img src={surveyPic.src} alt="person" />
+                      <Image
+                        width={100}
+                        height={120}
+                        src={surveyPic.src}
+                        alt="person"
+                      />
                     </div>
                     <div className="survey-card__details">
                       <p>User Name : {userName}</p>

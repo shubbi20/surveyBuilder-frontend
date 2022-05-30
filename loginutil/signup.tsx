@@ -1,7 +1,7 @@
 import React from "react";
 
-import styles from "./Input.module.css";
-
+//import styles from "./Input.module.css";
+import styles from "../styles/signup.module.css";
 export default function Input(props: any) {
   const { label, name, formik, ...attr } = props;
   return (

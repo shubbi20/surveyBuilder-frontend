@@ -6,12 +6,13 @@ import { useAtom } from "jotai";
 
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import Input from "./Input";
+import Input from "../../loginutil/Input";
 import login from "../../api/login";
 
 import Loader from "../Loader";
 
-import styles from "./index.module.css";
+// import styles from "./index.module.css";
+import styles from "../../styles/index.module.css";
 import { useRouter } from "next/router";
 
 const Signup = () => {

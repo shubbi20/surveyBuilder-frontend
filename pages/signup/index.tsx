@@ -2,9 +2,10 @@ import { MenuBar } from "../../component/menuBar";
 
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import Input from "./Input";
+import Input from "../../loginutil/signup";
 
-import styles from "./index.module.css";
+//import styles from "./index.module.css";
+import styles from "../../styles/sign.module.css";
 
 const SignUp = () => {
   const formik = useFormik({
