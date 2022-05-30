@@ -1,5 +1,5 @@
 import apiUrl from "./apiUrl";
-import { SurveyResponseInterface } from "../../../state-machine/designer/attemptState";
+import { SurveyResponseInterface } from "../state-machine/designer/attemptState";
 
 const getSurvey = async (token: any, surveyId: string) => {
   try {
