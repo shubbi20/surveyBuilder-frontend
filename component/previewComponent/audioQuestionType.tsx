@@ -1,8 +1,7 @@
 import styles from "../../styles/preview.module.scss";
 import { useEffect, useState } from "react";
 import { Button } from "antd";
-import { CheckOutlined, AudioOutlined } from "@ant-design/icons";
-import { Rate } from "antd";
+import { AudioOutlined } from "@ant-design/icons";
 
 interface props {
   question: string;
@@ -43,19 +42,6 @@ const AudioQuestion: React.FC<props> = ({
           }}
         >
           Record
-        </Button>
-
-        <Button
-          type="primary"
-          icon={<CheckOutlined />}
-          size="large"
-          onClick={toggleCheck}
-          style={{
-            width: 130,
-            height: 50,
-          }}
-        >
-          Finished
         </Button>
       </div>
     )

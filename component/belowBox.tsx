@@ -1,5 +1,4 @@
 import React from "react";
-import { LineChartOutlined } from "@ant-design/icons";
 import styles from "../styles/homeContent.module.scss";
 
 interface Props extends React.PropsWithChildren<any> {

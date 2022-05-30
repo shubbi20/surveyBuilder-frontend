@@ -1,33 +1,48 @@
 import styles from "../../styles/preview.module.scss";
 import { useEffect, useState } from "react";
-import { Button } from "antd";
-import { CheckOutlined } from "@ant-design/icons";
-import { Radio, Input, Space } from "antd";
-import {tokenAtom} from '../../state-machine/designer/index';
-
+import { Radio, Space } from "antd";
+import { useAtom } from "jotai";
+import { SurveyResponseAtom } from "../../state-machine/designer/attemptState";
 
 interface props {
   question: string;
   description: string;
   choices: string[];
-  toggleCheck: () => void;
+  index?: number;
+  finish?: (val: number) => void;
 }
 
 const SelectionQuestion: React.FC<props> = ({
   question,
   description,
-  toggleCheck,
   choices,
+  index,
+  finish,
 }): any => {
+  const [val, setVal] = useState(0);
+  const [surveyResponse, setSurveyResponse] = useAtom(SurveyResponseAtom);
   const [mounted, setMounted] = useState(false);
   useEffect(() => {
     setMounted(true);
   }, []);
 
   const onRadioChange = (e: any) => {
-    console.log("radio checked", e.target.value);
+    if (val === 0) {
+      setVal(val + 1);
+      if (typeof finish !== "undefined") {
+        console.log("he how are you");
+        finish(1);
+      }
+    }
+
+    const questionAns = e.target.value;
+    if (index) {
+      const dat = surveyResponse;
+      dat[index].questionAns = questionAns;
+      setSurveyResponse(dat);
+    }
   };
-  
+
   return (
     mounted && (
       <div className={styles.typeContainer}>
@@ -41,15 +56,6 @@ const SelectionQuestion: React.FC<props> = ({
             })}
           </Space>
         </Radio.Group>
-
-        <Button
-          type="primary"
-          icon={<CheckOutlined />}
-          size="large"
-          onClick={toggleCheck}
-        >
-          Finished
-        </Button>
       </div>
     )
   );

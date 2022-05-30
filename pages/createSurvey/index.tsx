@@ -1,5 +1,4 @@
 import { useAtom } from "jotai";
-import { NextPage } from "next";
 import { useEffect, useState } from "react";
 import { MenuBar } from "../../component/menuBar";
 import { SurveyBuilder } from "../../component/surveyBuilder/surveyBuilder";

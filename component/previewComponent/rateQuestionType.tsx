@@ -1,26 +1,44 @@
 import styles from "../../styles/preview.module.scss";
 import { useEffect, useState } from "react";
-import { Button } from "antd";
-import { CheckOutlined, AudioOutlined } from "@ant-design/icons";
 import { Rate } from "antd";
+import "antd/dist/antd.css";
+import { useAtom } from "jotai";
+import { SurveyResponseAtom } from "../../state-machine/designer/attemptState";
 
 interface props {
   question: string;
   description: string;
-  toggleCheck: () => void;
+  index?: number;
+  finish?: (val: number) => void;
 }
 const RateQuestion: React.FC<props> = ({
   question,
   description,
-  toggleCheck,
+  index,
+  finish,
 }): any => {
   const [mounted, setMounted] = useState(false);
+  const [surveyResponse, setSurveyResponse] = useAtom(SurveyResponseAtom);
+
+  const [val, setVal] = useState(0);
   useEffect(() => {
     setMounted(true);
   }, []);
 
   const currentStart = (e: any) => {
-    console.log(e);
+    if (val === 0) {
+      setVal(val + 1);
+      if (finish) {
+        finish(1);
+      }
+    }
+
+    const questionAns = e;
+    if (index) {
+      const dat = surveyResponse;
+      dat[index].questionAns = questionAns;
+      setSurveyResponse(dat);
+    }
   };
 
   return (
@@ -29,16 +47,6 @@ const RateQuestion: React.FC<props> = ({
         <div className={styles.previewQuestion}>{question}</div>
         <div className={styles.previewDescription}>{description}</div>
         <Rate defaultValue={3} onChange={currentStart} />
-        <span className="ant-rate-text"></span>
-        <br />
-        <Button
-          type="primary"
-          icon={<CheckOutlined />}
-          size="large"
-          onClick={toggleCheck}
-        >
-          Finished
-        </Button>
       </div>
     )
   );

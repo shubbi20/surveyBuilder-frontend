@@ -5,12 +5,14 @@ import {
   toggleCheckAtom,
 } from "../../state-machine/designer";
 import { useAtom } from "jotai";
-import TextQuestionType from "./textQuestionType";
 import Finish from "./finish";
 import { useEffect, useState } from "react";
 import AudioQuestion from "./audioQuestionType";
+import TextQuestionType from "./textQuestionType";
 import RateQuestion from "./rateQuestionType";
 import SelectionQuestion from "./selectionQuestionType";
+import { Button } from "antd";
+import { CheckOutlined } from "@ant-design/icons";
 /**
  * QuestionType
  * selectionQuestion
@@ -34,7 +36,7 @@ const Preview: React.FC<any> = (): false | any => {
   useEffect(() => {
     setMounted(true);
   }, []);
-  console.log("negi", check);
+
   return (
     mounted && (
       <div className={styles.previewContainer}>
@@ -59,7 +61,6 @@ const Preview: React.FC<any> = (): false | any => {
           <TextQuestionType
             question={selectionQuestion[indexOfElement].Question}
             description={selectionQuestion[indexOfElement].desc}
-            toggleCheck={toggleCheck}
           />
         ) : null}
 
@@ -82,7 +83,6 @@ const Preview: React.FC<any> = (): false | any => {
           <RateQuestion
             question={selectionQuestion[indexOfElement].Question}
             description={selectionQuestion[indexOfElement].desc}
-            toggleCheck={toggleCheck}
           />
         ) : null}
 
@@ -94,8 +94,20 @@ const Preview: React.FC<any> = (): false | any => {
             question={selectionQuestion[indexOfElement].Question}
             description={selectionQuestion[indexOfElement].desc}
             choices={selectionQuestion[indexOfElement].choices}
-            toggleCheck={toggleCheck}
           />
+        ) : null}
+
+        {typeof indexOfElement !== "undefined" ? (
+          <div style={{ display: "flex", justifyContent: "center" }}>
+            <Button
+              type="primary"
+              icon={<CheckOutlined />}
+              size="large"
+              onClick={toggleCheck}
+            >
+              Finished
+            </Button>
+          </div>
         ) : null}
 
         {check ? <Finish /> : null}

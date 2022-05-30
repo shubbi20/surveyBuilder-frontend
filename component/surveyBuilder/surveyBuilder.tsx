@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Modal, Button, Input } from "antd";
+import { Modal, Button, Input, message, Popconfirm } from "antd";
 import {
   selectionQuestionAtom,
   Selectiontypeinterface,
@@ -20,12 +20,13 @@ import {
 import { QuestionType } from "./questionType";
 import { SelectionQuestionType } from "./selectionType";
 import createSurveyApi from "../../pages/util/api/createSurveyApi";
+import Router, { useRouter } from "next/router";
 
 interface Props extends React.PropsWithChildren<any> {}
 
 export const SurveyBuilder: any = () => {
   const [, addSelectionQuestion] = useAtom(addSelectionQuestionAtom);
-
+  const router = useRouter();
   const [mounted, setMounted] = useState(false);
   useEffect(() => {
     setMounted(true);
@@ -86,15 +87,27 @@ export const SurveyBuilder: any = () => {
     };
   };
   const handleRef = (el: any) => {
-    // console.log("hey", el);
     if (!el) {
       return;
     }
     el.scrollIntoView();
   };
   const [token, setToken] = useAtom(tokenAtom);
+
   const handleSaveSurvey = async () => {
-    await createSurveyApi({ surveyName, selectionQuestion, token });
+    const [data, error] = await createSurveyApi({
+      surveyName,
+      selectionQuestion,
+      token,
+    });
+    if (data) {
+      message.success("Your survey is created");
+      localStorage.removeItem("atomarr");
+      localStorage.removeItem("survey");
+      localStorage.removeItem("indexElementPreview");
+      router.push("/home");
+      window.location.reload();
+    }
   };
 
   return (
@@ -132,14 +145,17 @@ export const SurveyBuilder: any = () => {
           +New Question
         </Button>
         {selectionQuestion.length > 0 ? (
-          <Button
-            ref={handleRef}
-            type="primary"
-            style={{ margin: "15px 15px 60px 1px" }}
-            onClick={handleSaveSurvey}
+          <Popconfirm
+            title="Are you sure to save this survey?"
+            onConfirm={handleSaveSurvey}
+            onCancel={() => console.log("cancel")}
+            okText="Yes"
+            cancelText="No"
           >
-            Save Survey
-          </Button>
+            <Button ref={handleRef} type="primary">
+              Save survey
+            </Button>
+          </Popconfirm>
         ) : null}
 
         <Modal

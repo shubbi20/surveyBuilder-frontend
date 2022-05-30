@@ -1,38 +1,57 @@
 import styles from "../../styles/preview.module.scss";
-import {
-  indexElementPreviewAtom,
-  updateIndexPrevElementAtom,
-  selectionQuestionAtom,
-} from "../../state-machine/designer";
-import { useAtom } from "jotai";
 import { Input } from "antd";
 import { useEffect, useState } from "react";
-import { Button } from "antd";
-import { CheckOutlined } from "@ant-design/icons";
+import { useAtom } from "jotai";
+import { SurveyResponseAtom } from "../../state-machine/designer/attemptState";
 
 const { TextArea } = Input;
 
 interface props {
   question: string;
   description: string;
-  toggleCheck: () => void;
+  index?: number;
+  finish?: (val: number) => void;
 }
 
 const TextQuestionType: React.FC<props> = ({
   question,
   description,
-  toggleCheck,
+  index,
+  finish,
 }): false | any => {
-  const [selectionQuestion] = useAtom(selectionQuestionAtom);
-  const [indexOfElement] = useAtom(indexElementPreviewAtom);
-
+  const [valText, setValText] = useState("");
+  const [surveyResponse, setSurveyResponse] = useAtom(SurveyResponseAtom);
+  const [val, setVal] = useState(0);
   const [mounted, setMounted] = useState(false);
   useEffect(() => {
     setMounted(true);
   }, []);
+
   const onChange = (e: any) => {
-    console.log("Change:", e.target.value);
+    setValText(e.target.value);
   };
+
+  useEffect(() => {
+    const questionAns = valText;
+    if (val === 0 && questionAns.trim().length > 0) {
+      setVal(val + 1);
+      if (finish) {
+        finish(1);
+      }
+    }
+    if (questionAns.trim().length === 0 && val != 0) {
+      if (finish && val !== 0) {
+        finish(-1);
+      }
+      setVal(0);
+    }
+
+    if (typeof index === "number") {
+      const dat = surveyResponse;
+      dat[index].questionAns = questionAns;
+      setSurveyResponse(dat);
+    }
+  }, [valText]);
 
   return (
     mounted && (
@@ -43,20 +62,13 @@ const TextQuestionType: React.FC<props> = ({
         <div>
           <TextArea
             showCount
-            maxLength={120}
-            style={{ height: 230, width: 460 }}
+            maxLength={257}
+            minLength={20}
+            style={{ height: "16em", width: "33em" }}
             onChange={onChange}
+            value={valText}
           />
         </div>
-
-        <Button
-          type="primary"
-          icon={<CheckOutlined />}
-          size="large"
-          onClick={toggleCheck}
-        >
-          Finished
-        </Button>
       </div>
     )
   );

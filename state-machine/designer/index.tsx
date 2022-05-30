@@ -1,18 +1,11 @@
-import {
-  Atom,
-  atom,
-  SetStateAction,
-  useAtom,
-  useAtomValue,
-  WritableAtom,
-} from "jotai";
-import { atomWithStorage, RESET, selectAtom } from "jotai/utils";
+import { atom, useAtomValue } from "jotai";
+import { atomWithStorage } from "jotai/utils";
 import { useMemo } from "react";
 
 export const rightDivWidthAtom = atomWithStorage("rightDivWidth", 543);
 
 export const tokenAtom = atomWithStorage("authToken", "");
-
+export const userAtom = atomWithStorage("user", "");
 export const surveyAtom = atomWithStorage("survey", "");
 
 export const surveyNameAtom = atom(

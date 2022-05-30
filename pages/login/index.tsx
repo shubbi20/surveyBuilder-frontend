@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { MenuBar } from "../../component/menuBar";
 
-import { tokenAtom } from "../../state-machine/designer/index";
+import { tokenAtom, userAtom } from "../../state-machine/designer/index";
 import { useAtom } from "jotai";
 
 import { useFormik } from "formik";
@@ -21,6 +21,7 @@ const Signup = () => {
     setMounted(true);
   }, []);
   const [token, setToken] = useAtom(tokenAtom);
+  const [user, setUser] = useAtom(userAtom);
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState({
     username: "",
@@ -56,6 +57,7 @@ const Signup = () => {
       if (data) {
         console.log(data.token);
         setToken(data.token);
+        setUser(username);
         router.push("home");
       }
       console.log("Error", error);
