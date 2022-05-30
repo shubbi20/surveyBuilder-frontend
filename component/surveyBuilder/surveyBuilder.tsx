@@ -19,7 +19,7 @@ import {
 } from "@ant-design/icons";
 import { QuestionType } from "./questionType";
 import { SelectionQuestionType } from "./selectionType";
-import createSurveyApi from "../../pages/util/api/createSurveyApi";
+import createSurveyApi from "../../api/createSurveyApi";
 import Router, { useRouter } from "next/router";
 
 interface Props extends React.PropsWithChildren<any> {}

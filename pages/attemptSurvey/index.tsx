@@ -4,7 +4,7 @@ import Loader from "../Loader";
 import { tokenAtom } from "../../state-machine/designer/index";
 import { useAtom } from "jotai";
 import { useRouter } from "next/router";
-import getAllSurveys from "../util/api/getAllSurveys";
+import getAllSurveys from "../../api/getAllSurveys";
 import surveyPic from "../../images/survey.png";
 
 export default function AllSurveys() {

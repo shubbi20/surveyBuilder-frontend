@@ -7,7 +7,7 @@ import { useAtom } from "jotai";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import Input from "./Input";
-import login from "../util/api/login";
+import login from "../../api/login";
 
 import Loader from "../Loader";
 

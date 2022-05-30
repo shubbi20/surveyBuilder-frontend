@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { MenuBar } from "../../component/menuBar";
 import { tokenAtom, userAtom } from "../../state-machine/designer";
 import styles from "../../styles/attemptSurvey.module.scss";
-import getSurvey, { postSurveyResponse } from "../util/api/survey";
+import getSurvey, { postSurveyResponse } from "../../api/survey";
 import TextQuestionType from "../../component/previewComponent/textQuestionType";
 import RateQuestion from "../../component/previewComponent/rateQuestionType";
 import SelectionQuestion from "../../component/previewComponent/selectionQuestionType";
