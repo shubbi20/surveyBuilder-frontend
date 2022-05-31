@@ -105,7 +105,7 @@ export const SurveyBuilder: any = () => {
       localStorage.removeItem("atomarr");
       localStorage.removeItem("survey");
       localStorage.removeItem("indexElementPreview");
-      router.push("/home");
+      router.push("/");
       window.location.reload();
     }
   };

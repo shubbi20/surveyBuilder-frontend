@@ -27,12 +27,12 @@ export const MenuBar = () => {
       />
 
       <div className={styles.container2}>
-        <Link href="/home">
+        <Link href="/">
           <div
-            className={router.pathname == "/home" ? styles.active : ""}
+            className={router.pathname == "/" ? styles.active : ""}
             style={{ marginRight: "1.1em" }}
           >
-            home
+            Home
           </div>
         </Link>
 
@@ -45,7 +45,7 @@ export const MenuBar = () => {
                 }
                 style={{ marginRight: "1.1em" }}
               >
-                createSurvey
+                CreateSurvey
               </div>
             </Link>
             <Link href="/attemptSurvey">
@@ -55,7 +55,7 @@ export const MenuBar = () => {
                 }
                 style={{ marginRight: "1.7em" }}
               >
-                attemptSurvey
+                AttemptSurvey
               </div>
             </Link>
             <Link href="/logout">

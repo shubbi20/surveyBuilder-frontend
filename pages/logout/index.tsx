@@ -1,6 +1,7 @@
 import { Button } from "antd";
 import { useRouter } from "next/router";
 import { MenuBar } from "../../component/menuBar";
+import "antd/dist/antd.css";
 
 const Logout = () => {
   const router = useRouter();
@@ -14,7 +15,7 @@ const Logout = () => {
         type="primary"
         onClick={() => {
           localStorage.clear();
-          router.push("/home");
+          router.push("/");
         }}
       >
         LogOut

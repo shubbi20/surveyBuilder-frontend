@@ -59,7 +59,7 @@ const Signup = () => {
         console.log(data.token);
         setToken(data.token);
         setUser(username);
-        router.push("home");
+        router.push("/");
       }
       console.log("Error", error);
       setError(error);
