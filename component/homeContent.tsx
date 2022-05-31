@@ -35,7 +35,7 @@ export const HomeContent = () => {
        */}
       <div className={styles.midContainer}>
         <h1>A survey tool like no other</h1>
-        <p style={{ fontSize: "78px" }}>
+        <p>
           Only Survey Rocketo connects you to valuable customer insights—and
           then helps you turn those insights into action, automatically.
         </p>
