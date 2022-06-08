@@ -4,7 +4,7 @@ import Loader from "../Loader";
 import { tokenAtom } from "../../state-machine/designer/index";
 import { useAtom } from "jotai";
 import { useRouter } from "next/router";
-import getAllSurveys from "../../api/getAllSurveys";
+import { getSurveysForAttempt } from "../../api/getAllSurveys";
 import surveyPic from "../../images/survey.png";
 import Image from "next/image";
 export default function AllSurveys() {
@@ -24,7 +24,7 @@ export default function AllSurveys() {
     }
     const fetching = async () => {
       setLoading(true);
-      const [data, error] = await getAllSurveys(token);
+      const [data, error] = await getSurveysForAttempt(token);
       setData(data);
       console.log(data);
       setError(error);

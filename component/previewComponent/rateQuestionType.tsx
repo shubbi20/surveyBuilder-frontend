@@ -3,7 +3,10 @@ import { useEffect, useState } from "react";
 import { Rate } from "antd";
 import "antd/dist/antd.css";
 import { useAtom } from "jotai";
-import { SurveyResponseAtom } from "../../state-machine/designer/attemptState";
+import {
+  SurveyResponseAtom,
+  SurveyResponseInterface,
+} from "../../state-machine/designer/attemptState";
 
 interface props {
   question: string;
@@ -34,10 +37,12 @@ const RateQuestion: React.FC<props> = ({
     }
 
     const questionAns = e;
-    if (index) {
-      const dat = surveyResponse;
-      dat[index].questionAns = questionAns;
-      setSurveyResponse(dat);
+    if (typeof index === "number") {
+      const dat: SurveyResponseInterface[] = surveyResponse;
+      if (dat && dat[index]) {
+        dat[index].questionAns = questionAns;
+        setSurveyResponse(dat);
+      }
     }
   };
 

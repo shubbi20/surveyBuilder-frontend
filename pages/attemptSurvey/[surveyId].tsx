@@ -83,7 +83,7 @@ const SurveyAttempt = () => {
   const addFinishLength = (val: number) => {
     console.log(finishlength, "length");
     setFinishLength(finishlength + val);
-    console.log("chl gya");
+    //console.log("chl gya");
   };
 
   const handleFinish = async () => {
@@ -93,7 +93,8 @@ const SurveyAttempt = () => {
       const surveyCreator = (surveyData as survey).userName;
       const surveyId = (surveyData as survey)._id;
       const surveyResponse: SurveyResponseInterface[] = response;
-      console.log("see", surveyResponse);
+      console.log("see", finishlength);
+      console.log("see Response length", response.length);
       const [data, error] = await postSurveyResponse({
         token,
         surveyId,

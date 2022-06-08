@@ -2,7 +2,10 @@ import styles from "../../styles/preview.module.scss";
 import { useEffect, useState } from "react";
 import { Radio, Space } from "antd";
 import { useAtom } from "jotai";
-import { SurveyResponseAtom } from "../../state-machine/designer/attemptState";
+import {
+  SurveyResponseAtom,
+  SurveyResponseInterface,
+} from "../../state-machine/designer/attemptState";
 
 interface props {
   question: string;
@@ -30,16 +33,17 @@ const SelectionQuestion: React.FC<props> = ({
     if (val === 0) {
       setVal(val + 1);
       if (typeof finish !== "undefined") {
-        console.log("he how are you");
         finish(1);
       }
     }
 
-    const questionAns = e.target.value;
-    if (index) {
-      const dat = surveyResponse;
-      dat[index].questionAns = questionAns;
-      setSurveyResponse(dat);
+    const queAns = e.target.value;
+    if (typeof index === "number") {
+      const dat: SurveyResponseInterface[] = surveyResponse;
+      if (dat && dat[index]) {
+        dat[index].questionAns = queAns.toString();
+        setSurveyResponse(dat);
+      }
     }
   };
 

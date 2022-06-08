@@ -6,8 +6,16 @@ import Input from "../../loginutil/signup";
 
 //import styles from "./index.module.css";
 import styles from "../../styles/sign.module.css";
+import signup from "../../api/signup";
+import { useAtom } from "jotai";
+import { tokenAtom, userAtom } from "../../state-machine/designer";
+import { useRouter } from "next/router";
+import { message } from "antd";
 
 const SignUp = () => {
+  const router = useRouter();
+  const [token, setToken] = useAtom(tokenAtom);
+  const [user, setUser] = useAtom(userAtom);
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -48,8 +56,23 @@ const SignUp = () => {
         .max(16, "Must be 16 characters or less")
         .required("Password is required"),
     }),
-    onSubmit: (values) => {
+    onSubmit: async (values) => {
       console.log(values);
+      const { name, username, email, age, mobile, password } = values;
+      const [data, error] = await signup({
+        name,
+        username,
+        email,
+        age,
+        mobile,
+        password,
+      });
+      if (data) {
+        console.log(data.token);
+        router.push("/login");
+        return;
+      }
+      console.log("Error", error);
       formik.resetForm();
     },
   });

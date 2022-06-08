@@ -50,7 +50,7 @@ const Signup = () => {
     }),
     onSubmit: async (values) => {
       setLoading(true);
-      console.log(values);
+      // console.log(values);
       const { username, password } = values;
       const [data, error] = await login({ username, password });
       console.log("Data", data);

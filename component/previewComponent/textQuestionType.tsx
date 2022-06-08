@@ -3,6 +3,7 @@ import { Input } from "antd";
 import { useEffect, useState } from "react";
 import { useAtom } from "jotai";
 import { SurveyResponseAtom } from "../../state-machine/designer/attemptState";
+import { SurveyResponseInterface } from "../../state-machine/designer/attemptState";
 
 const { TextArea } = Input;
 
@@ -33,6 +34,7 @@ const TextQuestionType: React.FC<props> = ({
 
   useEffect(() => {
     const questionAns = valText;
+    const data = surveyResponse;
     if (val === 0 && questionAns.trim().length > 0) {
       setVal(val + 1);
       if (finish) {
@@ -47,9 +49,11 @@ const TextQuestionType: React.FC<props> = ({
     }
 
     if (typeof index === "number") {
-      const dat = surveyResponse;
-      dat[index].questionAns = questionAns;
-      setSurveyResponse(dat);
+      const dat: SurveyResponseInterface[] = surveyResponse;
+      if (dat && dat[index]) {
+        dat[index].questionAns = questionAns;
+        setSurveyResponse(dat);
+      }
     }
   }, [valText]);
 

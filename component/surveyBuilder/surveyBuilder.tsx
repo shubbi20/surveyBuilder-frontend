@@ -22,8 +22,6 @@ import { SelectionQuestionType } from "./selectionType";
 import createSurveyApi from "../../api/createSurveyApi";
 import Router, { useRouter } from "next/router";
 
-interface Props extends React.PropsWithChildren<any> {}
-
 export const SurveyBuilder: any = () => {
   const [, addSelectionQuestion] = useAtom(addSelectionQuestionAtom);
   const router = useRouter();
@@ -95,6 +93,10 @@ export const SurveyBuilder: any = () => {
   const [token, setToken] = useAtom(tokenAtom);
 
   const handleSaveSurvey = async () => {
+    if (surveyName.length < 2) {
+      message.warning("You have not name your survey");
+      return;
+    }
     const [data, error] = await createSurveyApi({
       surveyName,
       selectionQuestion,
@@ -171,12 +173,12 @@ export const SurveyBuilder: any = () => {
             Quesdesc={"choose from a set of options"}
           ></QuestionType>
 
-          <QuestionType
+          {/* <QuestionType
             handlefunc={handleSelectionQuestion("audioQuestion")}
             Quesicon={(<AudioOutlined />) as any}
             Questype={"Audio"}
             Quesdesc={"speak into a microphone"}
-          ></QuestionType>
+          ></QuestionType> */}
 
           <QuestionType
             handlefunc={handleSelectionQuestion("textQuestion")}
