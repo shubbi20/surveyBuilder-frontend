@@ -7,6 +7,7 @@ import { useRouter } from "next/router";
 import { getSurveysForAttempt } from "../../api/getAllSurveys";
 import surveyPic from "../../images/survey.png";
 import Image from "next/image";
+
 export default function AllSurveys() {
   const [mounted, setMounted] = useState(false);
   useEffect(() => {

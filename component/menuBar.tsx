@@ -58,6 +58,16 @@ export const MenuBar = () => {
                 AttemptSurvey
               </div>
             </Link>
+            <Link href="/yourSurvey">
+              <div
+                className={
+                  router.pathname == "/yourSurvey" ? styles.active : ""
+                }
+                style={{ marginRight: "1.7em" }}
+              >
+                YourSurvey
+              </div>
+            </Link>
             <Link href="/logout">
               <div
                 className={router.pathname == "/logout" ? styles.active : ""}

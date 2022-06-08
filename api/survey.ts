@@ -74,4 +74,98 @@ export const postSurveyResponse = async ({
     ];
   }
 };
+
+export const getUserSurvey = async (token: any) => {
+  try {
+    const url = apiUrl + "/getUserSurveys";
+
+    const response = await fetch(url, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
+      },
+    });
+
+    const data = await response.json();
+    if (!response.ok) {
+      throw data;
+    }
+
+    return [data, null];
+  } catch (err) {
+    return [null, err];
+  }
+};
+
+export const deleteSurvey = async (token: any, surveyId: any) => {
+  try {
+    const url = apiUrl + "/deleteSurvey";
+
+    const response = await fetch(url, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
+      },
+      body: JSON.stringify({
+        surveyId,
+      }),
+    });
+
+    const data = await response.json();
+    if (!response.ok) {
+      throw data;
+    }
+
+    return [data, null];
+  } catch (err) {
+    return [null, err];
+  }
+};
+
+export const getSurveyRes = async (token: any, surveyName: string) => {
+  try {
+    const url = apiUrl + "/getSurveyResponse/" + surveyName;
+
+    const response = await fetch(url, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
+      },
+    });
+
+    const data = await response.json();
+    if (!response.ok) {
+      console.log("champak");
+      throw data;
+    }
+
+    return [data, null];
+  } catch (err) {
+    return [null, err];
+  }
+};
+
+export const getSurveyResponse = async (token: string, surveyName: string) => {
+  try {
+    const url = apiUrl + "/getSurveyResponse/" + surveyName;
+    //console.log("jjjj", token);
+    const response = await fetch(url, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
+      },
+    });
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw data;
+    }
+
+    return [data, null];
+  } catch (err) {
+    return [null, err];
+  }
+};
+
 export default getSurvey;

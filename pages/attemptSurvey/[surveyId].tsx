@@ -81,7 +81,7 @@ const SurveyAttempt = () => {
   }, [router.isReady]);
 
   const addFinishLength = (val: number) => {
-    console.log(finishlength, "length");
+    //console.log(finishlength, "length");
     setFinishLength(finishlength + val);
     //console.log("chl gya");
   };
@@ -93,8 +93,6 @@ const SurveyAttempt = () => {
       const surveyCreator = (surveyData as survey).userName;
       const surveyId = (surveyData as survey)._id;
       const surveyResponse: SurveyResponseInterface[] = response;
-      console.log("see", finishlength);
-      console.log("see Response length", response.length);
       const [data, error] = await postSurveyResponse({
         token,
         surveyId,
