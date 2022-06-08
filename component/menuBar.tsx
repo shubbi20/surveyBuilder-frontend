@@ -71,7 +71,7 @@ export const MenuBar = () => {
             <Link href="/logout">
               <div
                 className={router.pathname == "/logout" ? styles.active : ""}
-                style={{ marginRight: "1.1em" }}
+                style={{ marginRight: "1.6em" }}
               >
                 LogOut
               </div>
@@ -91,7 +91,7 @@ export const MenuBar = () => {
             <Link href="/login">
               <div
                 className={router.pathname == "/login" ? styles.active : ""}
-                style={{ marginRight: "1.4em" }}
+                style={{ marginRight: "1.7em" }}
               >
                 Login
               </div>

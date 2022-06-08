@@ -6,7 +6,9 @@ import { tokenAtom } from "../../state-machine/designer";
 import surveyPic from "../../images/survey.png";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { Button } from "antd";
+import { Button, notification } from "antd";
+import { SmileOutlined } from "@ant-design/icons";
+import "antd/dist/antd.css";
 
 export const YourSurvey = () => {
   const [mounted, setMounted] = useState(false);
@@ -23,6 +25,14 @@ export const YourSurvey = () => {
       return data;
     }
     return null;
+  };
+
+  const openNotification = () => {
+    notification.open({
+      placement: "bottomRight",
+      message: "Notification Title",
+      description: "Welcome 😀 ,Hope you enjoy your stay",
+    });
   };
 
   const fetchDelete = async (surveyId: any) => {
@@ -47,6 +57,7 @@ export const YourSurvey = () => {
       }
     };
     fetchingData();
+    openNotification();
   }, []);
 
   return (
