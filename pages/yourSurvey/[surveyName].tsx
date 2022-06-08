@@ -119,7 +119,15 @@ export const SurveyResponse = () => {
               );
             })
           ) : (
-            <div>No one attempted the survey yet</div>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                marginTop: "20px",
+              }}
+            >
+              <h2>No one has attempted the survey yet: No Response to show</h2>
+            </div>
           )}
         </div>
       </div>
