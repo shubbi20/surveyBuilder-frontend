@@ -1,5 +1,22 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+## Introduction
+- Technology used:- Sass, React.js , Next.js , Jotai , Ant-D , TypeScript , Node.js , Express.js , mongoose , Mongodb
+- A web application platform where you can create your own survey and also attempt other surveys
+- You can delete, edit and get valuable cutomer insights using this website
+
+[![Site](https://img.shields.io/badge/Site_clickhere-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://surveyrocketo.vercel.app/)
+[![github:](https://img.shields.io/badge/my_github-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://github.com/shubbi20)
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/shubham-negi-098041124/)
+
+## ScreenShots
+#### Website Look
+![](https://github.com/shubbi20/surveyBuilder-frontend/blob/development/images/surveyRocketo1.JPG)
+#### All survey list
+![](https://github.com/shubbi20/surveyBuilder-frontend/blob/development/images/surveyRocketo2.JPG)
+#### See response
+![](https://github.com/shubbi20/surveyBuilder-frontend/blob/development/images/see%20response.JPG)
+
 ## Getting Started
 
 First, run the development server:
