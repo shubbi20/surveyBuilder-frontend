@@ -7,8 +7,6 @@ import surveyPic from "../../images/survey.png";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { Button, notification } from "antd";
-import { SmileOutlined } from "@ant-design/icons";
-import "antd/dist/antd.css";
 
 export const YourSurvey = () => {
   const [mounted, setMounted] = useState(false);
