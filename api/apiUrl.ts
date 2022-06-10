@@ -1,3 +1,3 @@
-const apiUrl = "http://localhost:3009";
+const apiUrl = "https://surveyrocketobackend.herokuapp.com";
 
 export default apiUrl;
