@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import { MenuBar } from "../component/menuBar";
 import styles from "../styles/page.module.scss";
 import { HomeContent } from "../component/homeContent";
-import { notification } from "antd";
-import "antd/dist/antd.css";
 
 const Home = () => {
   const [mounted, setMounted] = useState(false);
@@ -11,19 +9,6 @@ const Home = () => {
   useEffect(() => {
     setMounted(true);
   }, []);
-
-  useEffect(() => {
-    openNotification();
-    console.log("hello");
-  }, []);
-
-  const openNotification = () => {
-    notification.open({
-      placement: "bottomRight",
-      message: "hey 😊",
-      description: "Welcome to SurveyRocketo🚀",
-    });
-  };
 
   return (
     mounted && (
