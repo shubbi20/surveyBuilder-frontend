@@ -20,7 +20,7 @@ const Home = () => {
   const openNotification = () => {
     notification.open({
       placement: "bottomRight",
-      message: "Notification Title",
+      message: "hey 😊",
       description: "Welcome to SurveyRocketo🚀",
     });
   };
