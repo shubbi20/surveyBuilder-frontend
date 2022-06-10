@@ -2,13 +2,13 @@ import { MenuBar } from "../../component/menuBar";
 import { useRouter } from "next/router";
 import { useAtom } from "jotai";
 import { tokenAtom } from "../../state-machine/designer";
-import { getSurveyResponse, getSurveyRes } from "../../api/survey";
+import { getSurveyRes } from "../../api/survey";
 import { useEffect, useState } from "react";
 import { SurveyResponseInterface } from "../../state-machine/designer/attemptState";
 import surveyPic from "../../images/survey.png";
 import Image from "next/image";
 import "antd/dist/antd.css";
-import { Avatar, Button, Col, Divider, Drawer, List, Row } from "antd";
+import { Button, Divider, Drawer } from "antd";
 
 interface ResponseInterface {
   _id: any;

@@ -12,7 +12,6 @@ import {
 import { useAtom } from "jotai";
 import styles from "../../styles/designer.module.scss";
 import {
-  AudioOutlined,
   FormOutlined,
   UnorderedListOutlined,
   StarOutlined,
