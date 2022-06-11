@@ -5,7 +5,7 @@ import { SurveyBuilder } from "../../component/surveyBuilder/surveyBuilder";
 import { rightDivWidthAtom } from "../../state-machine/designer";
 import Preview from "../../component/previewComponent/preview";
 import styles from "../../styles/createSurvey.module.scss";
-
+//random
 const CreateSurvey: any = () => {
   const [statuscheck, setStatusCheck] = useState(false);
   const [checkBox, setCheckBox] = useState(0);
