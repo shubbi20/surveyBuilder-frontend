@@ -1,3 +1,3 @@
-const apiUrl = "https://surveyrocketobackend.herokuapp.com";
+const apiUrl = "https://panda-sari.cyclic.app";
 
 export default apiUrl;
