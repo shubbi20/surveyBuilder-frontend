@@ -19,7 +19,7 @@ const Home = () => {
         </div>
         <div className={styles.stickyFooter}>
           A project built with 💙 by{" "}
-          <a href="https://www.linkedin.com/in/shubham-negi20/">
+          <a href="https://www.linkedin.com/in/shubhamnegi20/">
             <u>Shubham negi</u>
           </a>
         </div>
